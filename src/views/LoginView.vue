@@ -2,7 +2,7 @@
     <div class="login-box">
         <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules" label-width="70px"
             class="demo-ruleForm">
-            <h2>后台管理系统</h2>
+            <h2>后台管理系统yeyye</h2>
             <el-form-item label="账号：" prop="username">
                 <el-input v-model="ruleForm.username" autocomplete="off" />
             </el-form-item>
