@@ -12,7 +12,7 @@
 
             <el-form-item>
                 <el-button class="loginBtn" type="primary">登录</el-button>
-                <el-button class="loginBtn" >重置</el-button>
+                <el-button class="loginBtn">重置</el-button>
             </el-form-item>
         </el-form>
 
@@ -21,45 +21,42 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue'
+import { LoginData } from "../type/login";
 
 export default defineComponent({
     setup() {
-        const data = reactive({
-            ruleForm: {
-                username: "",
-                password: "",
-            },
-            rules: {
-                username: [
-                    {
-                        required: true,
-                        message: '请输入账号',
-                        trigger: 'blur'
-                    },
-                    {
-                        min: 6,
-                        max: 12,
-                        message: '账号长度为6-12位',
-                        trigger: 'blur'
-                    },
-                ],
-                password: [
-                    {
-                        required: true,
-                        message: '请输入密码',
-                        trigger: 'blur'
-                    },
-                    {
-                        min: 6,
-                        max: 12,
-                        message: '账号长度为6-12位',
-                        trigger: 'blur'
-                    },
-                ],
+        // 通过new实例化对象，赋值给data
+        const data = reactive(new LoginData());
+        const rules = {
+            username: [
+                {
+                    required: true,
+                    message: '请输入账号',
+                    trigger: 'blur'
+                },
+                {
+                    min: 6,
+                    max: 12,
+                    message: '账号长度为6-12位',
+                    trigger: 'blur'
+                },
+            ],
+            password: [
+                {
+                    required: true,
+                    message: '请输入密码',
+                    trigger: 'blur'
+                },
+                {
+                    min: 6,
+                    max: 12,
+                    message: '账号长度为6-12位',
+                    trigger: 'blur'
+                },
+            ],
 
-            }
-        })
-        return { ...toRefs(data) }
+        }
+        return { ...toRefs(data), rules }
     }
 })
 </script>
@@ -80,11 +77,13 @@ export default defineComponent({
     padding: 30px 40px 30px 40px;
     border-radius: 20px;
 }
-.loginBtn{
+
+.loginBtn {
     // margin-top: 10px;
     width: 48%;
 }
-h2{
+
+h2 {
     margin-bottom: 30px;
 }
 </style>
