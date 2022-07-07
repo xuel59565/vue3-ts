@@ -76,14 +76,15 @@ export default defineComponent({
 .demo-ruleForm {
     width: 500px;
     margin: 200px auto;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 30px 40px 30px 40px;
     border-radius: 20px;
 }
 .loginBtn{
+    // margin-top: 10px;
     width: 48%;
 }
 h2{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 </style>
