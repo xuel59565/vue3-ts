@@ -6,13 +6,20 @@
             <el-form-item label="账号：" prop="username">
                 <el-input v-model="ruleForm.username" autocomplete="off" />
             </el-form-item>
-            <el-form-item label="密码：" prop="password">
-                <el-input v-model="ruleForm.password" autocomplete="off" />
+
+
+            <el-form-item label="密码:" prop="password">
+                <el-input v-model="ruleForm.password" type="password" autocomplete="off" />
             </el-form-item>
 
-            <el-form-item>
+            <!-- <el-form-item>
                 <el-button class="loginBtn" type="primary">登录</el-button>
                 <el-button class="loginBtn">重置</el-button>
+            </el-form-item> -->
+
+            <el-form-item>
+                <el-button class="loginBtn" type="primary" @click="submitForm(ruleFormRef)">登录</el-button>
+                <el-button class="loginBtn" @click="resetForm(ruleFormRef)">重置</el-button>
             </el-form-item>
         </el-form>
 
@@ -20,9 +27,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue'
+import { defineComponent, reactive, toRefs, ref } from 'vue'
 import { LoginData } from "../type/login";
-
+import type { FormInstance } from 'element-plus'
+import { login } from "../request/api";
 export default defineComponent({
     setup() {
         // 通过new实例化对象，赋值给data
@@ -55,8 +63,38 @@ export default defineComponent({
                 },
             ],
 
+
+        };
+        // 登录
+        const ruleFormRef = ref<FormInstance>()
+        const submitForm = (formEl: FormInstance | undefined) => {
+            if (!formEl) return
+            //validate对表单内容的验证；valid属于布尔类型，true则正确
+            formEl.validate((valid) => {
+               
+                if (valid) {
+                    //  const data = JSON.parse(localStorage.getItem('detailTab')||'')||[]
+                    console.log('提交!')
+                    //  data.ruleForm = data.ruleForm || {}
+                     
+                    // login(data.ruleForm).then((res) => {
+                    //     console.log(res)
+                        
+                    // })
+                } else {
+                    console.log('error submit!')
+                    return false
+                }
+            })
         }
-        return { ...toRefs(data), rules }
+
+        // 重置
+        const resetForm = () => {
+
+            data.ruleForm.username = "";
+            data.ruleForm.password = "";
+        }
+        return { ...toRefs(data), rules, ruleFormRef, submitForm }
     }
 })
 </script>
