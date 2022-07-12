@@ -1,4 +1,4 @@
-// 规范接口(登录  )
+// 规范接口(登录)
 export interface LoginFormInt {
     username: string
     password: string
