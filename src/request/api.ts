@@ -6,8 +6,8 @@ import service from ".";
 
 // 接口,用loginData给data做一个规范
 interface loginData{
-    username:"string",
-    password:"string"
+    username:string,
+    password:string
 }
 
 // 导出一个函数，需要传参所以login后有括号

@@ -1,6 +1,6 @@
 // 规范接口(登录)
 export interface LoginFormInt {
-    username:  string
+    username: string
     password: string
 }
 // 定义一个类，通过这个类实例化一个对象，将这个实例化对象赋值给data

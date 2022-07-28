@@ -3,7 +3,7 @@
         <el-form ref="ruleFormRef" :model="ruleForm" status-icon :rules="rules" label-width="70px"
             class="demo-ruleForm">
             <h2>后台管理系统</h2>
-            <el-form-item label="账号：" prop="username">
+            <el-form-item label="账号:" prop="username">
                 <el-input v-model="ruleForm.username" autocomplete="off" />
             </el-form-item>
 
@@ -77,10 +77,10 @@ export default defineComponent({
                     console.log('提交!')
                     //  data.ruleForm = data.ruleForm || {}
                      
-                    // login(data.ruleForm).then((res) => {
-                    //     console.log(res)
+                    login(data.ruleForm).then((res) => {
+                        console.log(res)
                         
-                    // })
+                    })
                 } else {
                     console.log('error submit!')
                     return false
