@@ -8,7 +8,7 @@
       label-width="70px"
       class="demo-ruleForm"
     >
-      <h2>后台管理系统</h2>
+      <h2>管理系统</h2>
       <el-form-item label="账号:" prop="username">
         <el-input v-model="ruleForm.username" autocomplete="off" />
       </el-form-item>
@@ -46,6 +46,7 @@ import { defineComponent, reactive, toRefs, ref } from "vue";
 import { LoginData } from "../type/login";
 import type { FormInstance } from "element-plus";
 import { login } from "../request/api";
+import { useRouter } from "vue-router";
 export default defineComponent({
   setup() {
     // 通过new实例化对象，赋值给data
@@ -58,7 +59,7 @@ export default defineComponent({
           trigger: "blur",
         },
         {
-          min: 6,
+          min: 5,
           max: 12,
           message: "账号长度为6-12位",
           trigger: "blur",
@@ -80,23 +81,28 @@ export default defineComponent({
     };
     // 登录
     const ruleFormRef = ref<FormInstance>();
+    // 这个方法执行以后相当于vue2中的$router
+    const router=useRouter()
     const submitForm = (formEl: FormInstance | undefined) => {
-    //     // 如果没有那就返回
-    //   if (!formEl) return;
-    //   //validate对表单内容的验证；valid属于布尔类型，true则正确
-    //   formEl.validate((valid) => {
-    //     if (valid) {
-    //       console.log("提交!");
-
-    //       login(data.ruleForm).then((res) => {
-    //         console.log(res);
-    //       });
-    //     } else {
-    //       console.log("error submit!");
-    //       return false;
-    //     }
-    //   });
-    console.log(formEl);
+        // 如果什么都没有那就返回
+      if (!formEl) return;
+      //validate对表单内容的验证；valid属于布尔类型，true则正确
+      formEl.validate((valid) => {
+        if (valid) {
+          // console.log("提交!");
+          login(data.ruleForm).then((res) => {
+            // console.log(res);
+            // 将token进行保存
+            localStorage.setItem('token',res.data.token)
+            // 跳转页面，首页
+            router.push('/')
+          });
+        } else {
+          console.log("error submit!");
+          return false;
+        }
+      });
+    // console.log(formEl);
     };
 
     // 重置
