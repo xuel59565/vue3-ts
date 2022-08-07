@@ -1,4 +1,4 @@
-// 规范接口(登录)
+// 规范接口(登录  )
 export interface LoginFormInt {
     username: string
     password: string
@@ -7,8 +7,8 @@ export interface LoginFormInt {
 // export是导出
 export class LoginData {
     // 是一个属性，这个属性是一个对象，其中他的类型是LoginFormInt
-    ruleForm:LoginFormInt={
-        username:'',
-        password:'',
+    ruleForm: LoginFormInt = {
+        username: '',
+        password: '',
     }
 }

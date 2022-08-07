@@ -20,7 +20,6 @@
             text-color="#fff"
           >
             <el-menu-item index="2">
-              <el-icon><icon-menu /></el-icon>
               <span>商品列表</span>
             </el-menu-item>
           </el-menu>
@@ -32,10 +31,17 @@
 </template>
 
 <script lang="ts">
+import router from "@/router";
 import { defineComponent } from "vue";
-
+// 引入路由
+import { useRouter } from "vue-router";
 export default defineComponent({
   name: "HomeView",
+  // 设置筛选
+  setup(){
+    const router=useRouter()
+    console.log(router.getRoutes());
+  },
   components: {},
 });
 </script>

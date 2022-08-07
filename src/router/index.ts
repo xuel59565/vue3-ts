@@ -5,7 +5,25 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    children: [
+      {
+        path: "goods",
+        name:"goods",
+        meta:{
+          isShow:true
+        },
+        component: () => import(/* webpackChunkName: "goods" */ '../views/GoodsView.vue')
+      },
+      {
+        path: "user",
+        name:"user",
+        meta:{
+          isShow:true
+        },
+        component: () => import(/* webpackChunkName: "user" */ '../views/UserView.vue')
+      }
+    ]
   },
   {
     path: '/about',
@@ -18,7 +36,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'login',
-    component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
+    component: () => import(/* webpackChunkName: "login" */ '../views/LoginView.vue')
   }
 ]
 
