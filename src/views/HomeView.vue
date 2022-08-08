@@ -18,13 +18,18 @@
             class="el-menu-vertical-demo"
             default-active="2"
             text-color="#fff"
+            router
           >
-            <el-menu-item index="2">
-              <span>商品列表</span>
+
+            <el-menu-item :index="item.path" v-for="item in list" :key="item.path">
+              <span>{{item.meta.title }} </span>
             </el-menu-item>
           </el-menu>
         </el-aside>
-        <el-main>Main</el-main>
+        <el-main>
+          <!-- 设置路由出口 -->
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -41,6 +46,10 @@ export default defineComponent({
   setup(){
     const router=useRouter()
     console.log(router.getRoutes());
+    const list=router.getRoutes().filter(v=>v.meta.isShow)
+    console.log(list)
+    return {list}
+
   },
   components: {},
 });

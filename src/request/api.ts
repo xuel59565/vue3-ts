@@ -9,7 +9,7 @@ interface loginData{
     username:string,
     password:string
 }
-
+// 登录接口
 // 导出一个函数，需要传参所以login后有括号
 // loginData是给data做一下类型规范
 export function login(data:loginData){
@@ -19,5 +19,12 @@ export function login(data:loginData){
         method:"post",
         // 数据
         data
+    })
+}
+// 商品列表接口
+export function getGoodsList(){
+    return service({
+        url:"/getGoodsList",
+        method:"get"
     })
 }
