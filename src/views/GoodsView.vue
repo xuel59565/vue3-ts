@@ -5,11 +5,14 @@
 </template>
 
 <script lang="ts">
+import { throwStatement } from '@babel/types'
 import { defineComponent } from 'vue'
-
+import { getGoodsList } from '../request/api'
 export default defineComponent({
-    setup () {
-        
+    setup() {
+        getGoodsList().then(res=>{
+            console.log(res)
+        })
 
         return {}
     }
@@ -17,5 +20,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 </style>

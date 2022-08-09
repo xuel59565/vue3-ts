@@ -20,14 +20,18 @@
             text-color="#fff"
             router
           >
+
             <!-- router开启路由模式，通过el-menu-item的index进行跳转 -->
             <el-menu-item :index="item.path" v-for="item in list" :key="item.path">
               <span> {{item.meta.title}}</span>
+
             </el-menu-item>
           </el-menu>
         </el-aside>
         <el-main>
-          <!-- 设置一个路由出口 -->
+
+          <!-- 设置路由出口 -->
+
           <router-view></router-view>
         </el-main>
       </el-container>

@@ -1,3 +1,4 @@
+// import { title } from 'process'
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
@@ -12,7 +13,9 @@ const routes: Array<RouteRecordRaw> = [
         name:"goods",
         meta:{
           isShow:true,
+
           title:"商品列表",
+
         },
         component: () => import(/* webpackChunkName: "goods" */ '../views/GoodsView.vue')
       },
