@@ -1,22 +1,36 @@
 <template>
-    <div>
-        商品列表
+  <div>
+    <div class="select-box">
+      <el-form :inline="true" :model="selectData" class="demo-form-inline">
+        <el-form-item label="标题">
+          <el-input v-model="selectData.title" placeholder="请输入关键字" />
+        </el-form-item>
+        <el-form-item label="详情">
+          <el-input v-model="selectData.introduce" placeholder="请输入关键字" />
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">查询</el-button>
+        </el-form-item>
+      </el-form>
     </div>
+  </div>
 </template>
 
 <script lang="ts">
-import { throwStatement } from '@babel/types'
-import { defineComponent } from 'vue'
-import { getGoodsList } from '../request/api'
+import { throwStatement } from "@babel/types";
+import { defineComponent, reactive, toRefs } from "vue";
+import { getGoodsList } from "../request/api";
+import { InitData } from "../type/goods";
 export default defineComponent({
-    setup() {
-        getGoodsList().then(res=>{
-            console.log(res)
-        })
+  setup() {
+    const data=reactive(new InitData)
+    getGoodsList().then((res) => {
+      console.log(res);
+    });
 
-        return {}
-    }
-})
+    return {...toRefs(data)};
+  },
+});
 </script>
 
 <style scoped>
