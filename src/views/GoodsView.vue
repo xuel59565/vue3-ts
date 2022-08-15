@@ -1,31 +1,5 @@
 <template>
-<<<<<<< HEAD
-  <div>
-    <div class="select-box">
-      <el-form :inline="true" :model="selectData" class="demo-form-inline">
-        <el-form-item label="标题">
-          <el-input v-model="selectData.title" placeholder="请输入关键字" />
-        </el-form-item>
-        <el-form-item label="详情">
-          <el-input v-model="selectData.introduce" placeholder="请输入关键字" />
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" >查询</el-button>
-        </el-form-item>
-      </el-form>
-    </div>
-    <div>
-        <el-table-column prop="date" label="Date" width="180" />
-        <el-table-column prop="name" label="Name" width="180" />
-        <el-table-column prop="address" label="Address" />
-    </div>
-  </div>
-</template>
 
-<script lang="ts">
-// import { throwStatement } from "@babel/types";
-import { defineComponent, reactive, toRefs } from "vue";
-=======
     <div>
         <div class="select-box">
             <el-form :inline="true" :model="selectData" class="demo-form-inline">
@@ -51,24 +25,14 @@ import { defineComponent, reactive, toRefs } from "vue";
         </div>
     </div>
 </template>
-
 <script lang="ts">
 import { throwStatement } from "@babel/types";
 import { computed, defineComponent, onMounted, reactive, toRefs, watch } from "vue";
->>>>>>> 37fa64f7cadb860639e24d0768405976b1758b9e
+
 import { getGoodsList } from "../request/api";
 import { InitData, ListInt } from "../type/goods";
 export default defineComponent({
-<<<<<<< HEAD
-  setup() {
-    const data = reactive(new InitData());
-    getGoodsList().then((res) => {
-      console.log(res);
-    });
 
-    return { ...toRefs(data) };
-  },
-=======
     setup() {
         const data = reactive(new InitData)
         // getGoodsList().then((res) => {
@@ -88,7 +52,6 @@ export default defineComponent({
                 data.selectData.count = res.data.length
             });
         }
-
         const dataList = reactive({
             comList: computed(() => {
                 //1-10
@@ -99,7 +62,6 @@ export default defineComponent({
         })
         const currentChange = (page: number) => {
             data.selectData.page = page
-
         }
         const sizeChange = (pagesize: number) => {
             data.selectData.pagesize = pagesize
@@ -113,7 +75,6 @@ export default defineComponent({
                 if (data.selectData.title) {
                     arr = data.list.filter((value) => {//将过滤出来的数组赋值给arr
                         return value.title.indexOf(data.selectData.title) != -1
-
                     })
                 }
                 if (data.selectData.introduce) {
@@ -121,7 +82,6 @@ export default defineComponent({
                         return value.introduce.indexOf(data.selectData.introduce) != -1
                     })
                 }
-
             } else {
                 arr = data.list
             }
@@ -140,7 +100,6 @@ export default defineComponent({
         })
         return { ...toRefs(data), currentChange, sizeChange, dataList, onSubmit };
     },
->>>>>>> 37fa64f7cadb860639e24d0768405976b1758b9e
 });
 </script>
 
