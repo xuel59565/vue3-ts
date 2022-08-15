@@ -1,4 +1,5 @@
 <template>
+
     <div>
         <div class="select-box">
             <el-form :inline="true" :model="selectData" class="demo-form-inline">
@@ -24,13 +25,14 @@
         </div>
     </div>
 </template>
-
 <script lang="ts">
 import { throwStatement } from "@babel/types";
 import { computed, defineComponent, onMounted, reactive, toRefs, watch } from "vue";
+
 import { getGoodsList } from "../request/api";
 import { InitData, ListInt } from "../type/goods";
 export default defineComponent({
+
     setup() {
         const data = reactive(new InitData)
         // getGoodsList().then((res) => {
@@ -50,7 +52,6 @@ export default defineComponent({
                 data.selectData.count = res.data.length
             });
         }
-
         const dataList = reactive({
             comList: computed(() => {
                 //1-10
@@ -61,7 +62,6 @@ export default defineComponent({
         })
         const currentChange = (page: number) => {
             data.selectData.page = page
-
         }
         const sizeChange = (pagesize: number) => {
             data.selectData.pagesize = pagesize
@@ -75,7 +75,6 @@ export default defineComponent({
                 if (data.selectData.title) {
                     arr = data.list.filter((value) => {//将过滤出来的数组赋值给arr
                         return value.title.indexOf(data.selectData.title) != -1
-
                     })
                 }
                 if (data.selectData.introduce) {
@@ -83,7 +82,6 @@ export default defineComponent({
                         return value.introduce.indexOf(data.selectData.introduce) != -1
                     })
                 }
-
             } else {
                 arr = data.list
             }

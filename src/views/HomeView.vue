@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import router from "@/router";
+// import router from "@/router";
 import { defineComponent } from "vue";
 // 引入路由
 import { useRouter } from "vue-router";
