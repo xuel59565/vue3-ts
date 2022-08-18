@@ -38,7 +38,8 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive, toRef, toRefs } from 'vue'
 import { getUserList, getRoleList } from "../request/api"
-import { InitData, ListInt } from "../type/user"
+import { InitData } from "../type/user"
+// import { InitData, ListInt } from "../type/user";
 export default defineComponent({
     setup() {
         // 实例化一个对象

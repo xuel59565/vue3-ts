@@ -21,10 +21,12 @@ interface RoleListInt {
     roleName: string
 }
 export class InitData {
-    salectData: SelectDataInt = {
+    selectData: SelectDataInt = {
         nickName: "",
         role: 0
     }
     list: ListInt[] = []//用来接收用户信息的列表
     roleList: RoleListInt[] = []//用来接收角色信息的列表
+    // list: ListInt[] = []//用来接受用户信息的列表
+    // roleList:RoleListInt[]=[]//用来接受角色信息的列表
 }
